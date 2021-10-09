@@ -43,7 +43,7 @@
       "columnData":[
         {"isin": "3985029CN8"}
       ],
-      "layout": [{
+      "layout": {
         "i": "lohgyuy-8-iu",
         "x": 0,
         "y": 0,
@@ -58,7 +58,7 @@
         "isResizable": true,
         "resizeHandles?": ["se"],
         "isBounded": false
-      }]
+      }
     }
   ]
 
