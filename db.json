@@ -1,0 +1,65 @@
+{
+  "archetypes": [
+    {
+      "id": 1,
+      "name": "Risk"
+    },
+    {
+      "id": 2, 
+      "name": "Position Pivot"
+    },
+    {
+      "id": 3, 
+      "name":"Hypothetical Overlay"
+    },
+    {
+      "id": 4,
+       "name":"Trader Summary"
+    }
+  ],
+  "books": [
+    {
+      "id": "IGT8"
+    },
+    {
+      "id": "IGT4"
+    },
+    {
+      "id": "IGT1"
+    },
+    {
+      "id": "IGA2"
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "archetype": 1,
+      "name": "Risk Table #1",
+      "bookAssociations": ["IGT8"],
+      "viewSettings": {
+        "hypotheticalPosition": true
+      },
+      "columnData":[
+        {"isin": "3985029CN8"}
+      ],
+      "layout": [{
+        "i": "lohgyuy-8-iu",
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "minW": 0,
+        "maxW": 999999,
+        "minH": 0,
+        "maxH": 999999,
+        "static": false,
+        "isDraggable": true,
+        "isResizable": true,
+        "resizeHandles?": ["se"],
+        "isBounded": false
+      }]
+    }
+  ]
+
+}
