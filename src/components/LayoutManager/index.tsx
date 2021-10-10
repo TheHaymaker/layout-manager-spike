@@ -56,16 +56,19 @@ border-radius: 3px;
 interface LayoutManagerProps {
   layouts: LayoutDetails[],
   views: Layout[]
+  handleLayoutChange?: any,
 }
 
 export const LayoutManager: React.FC<LayoutManagerProps> = ({
   layouts = [],
-  views = []
+  views = [],
+  handleLayoutChange = null
 }) => {
+
+  
   return (
-    <ReactGridLayout containerPadding={[10, 10]} className="layout" layout={layouts} cols={24} rowHeight={30} width={1200}>
+    <ReactGridLayout onLayoutChange={handleLayoutChange} className="layout" layout={layouts} cols={24} rowHeight={30} width={1200}>
     {layouts.map((lt: LayoutDetails, index) => {
-      console.log(lt)
       return (
         <RiskViewCard key={lt.i}>
         <CardWrapper>

@@ -65,7 +65,7 @@ export const AddRiskView: React.FC<AddRiskViewProps> = ({
       }
       // hide the dropdown
       setIsVisible(false)
-      setValue(newValue)
+      // setValue(newValue)
 
     }
   };

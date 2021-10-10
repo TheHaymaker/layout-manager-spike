@@ -37,27 +37,16 @@ export const CreatableSingle:React.FC<SelectProps> = ({
     newValue: OnChangeValue<SelectOption, false>,
     actionMeta: ActionMeta<SelectOption>
   ) => {
-    console.group('Value Changed');
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
     setValue(newValue)
   };
   const handleInputChange = (inputValue: any, actionMeta: any) => {
-    console.group('Input Changed');
-    console.log(inputValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
+    
   }
 
   const handleCreate = (inputValue: string) => {
     setIsLoading(true)
-    console.group('Option created');
-    console.log('Wait a moment...');
     setTimeout(() => {
       const newOption = createOption(inputValue);
-      console.log(newOption);
-      console.groupEnd();
       setIsLoading(false)
       setOptions([...options, newOption])
       setValue(newOption)
@@ -96,7 +85,28 @@ const App = () => {
   const [layouts, setLayouts] = useState<LayoutDetails[]>([])
   const [views, setViews] = useState<Layout[]>([])
   const handleSetViews = (newView: Layout) => {
-    setViews(prev => ([...prev, newView]))
+    setViews(prev => {
+      const newViews = [...prev, newView]
+      const layoutData = newViews.map((lt: Layout) => lt.layout)
+      setLayouts(layoutData)
+      return newViews
+    })
+  }
+
+  const handleLayoutChange = (opts: any) => {
+    setViews(prev => {
+      const newViews = prev.map(view => {
+      const updatedLayout = opts.find((layout: LayoutDetails) => layout.i === view.id)
+      if(updatedLayout) {
+        return Object.assign({}, view, {layout: updatedLayout})
+      }
+      return view
+    })
+
+    const layoutData = newViews.map((lt: Layout) => lt.layout)
+    setLayouts(layoutData)
+    return newViews
+  })
   }
   useEffect(() => {
     const getAllTheData = async () => {
@@ -110,12 +120,12 @@ const App = () => {
     getAllTheData()
   }, [])
 
-  useEffect(() => {
-    console.log(views)
-    const layoutData = views.map((lt: Layout) => lt.layout)
-    setLayouts(layoutData)
+  // useEffect(() => {
+  //   const layoutData = views.map((lt: Layout) => lt.layout)
+  //   console.log(layoutData)
+  //   setLayouts(layoutData)
 
-  }, [views])
+  // }, [views])
 
   const [compositions, setCompositions] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -146,6 +156,7 @@ const App = () => {
       <LayoutManager
         views={views}
         layouts={layouts}
+        handleLayoutChange={handleLayoutChange}
       />
     </div>
   );
