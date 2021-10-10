@@ -40,11 +40,13 @@ h6 {
 type CardHeaderProps = {
   title: string;
   viewId: string;
+  handleRemoveLayout?: any
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
   title = '',
-  viewId
+  viewId,
+  handleRemoveLayout = null
 }) => {
   return (
     <CardHeaderWrapper>
@@ -55,7 +57,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
         <button>
         <MdSettings />
         </button>
-        <button>
+        <button onClick={() => {handleRemoveLayout(viewId)}}>
         <MdClose />
         </button>
       </div>

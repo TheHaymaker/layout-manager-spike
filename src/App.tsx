@@ -120,12 +120,20 @@ const App = () => {
     getAllTheData()
   }, [])
 
-  // useEffect(() => {
-  //   const layoutData = views.map((lt: Layout) => lt.layout)
-  //   console.log(layoutData)
-  //   setLayouts(layoutData)
+  const removeLayout = (layoutId: string) => {
+    setViews(prev => {
+      const newViews: Layout[] = prev.reduce((prevViews: Layout[], view) => {
+      if(layoutId !== view.id) {
+         return [...prevViews, view]
+      }
+      return prevViews
+    }, [])
 
-  // }, [views])
+    const layoutData = newViews.map((lt: Layout) => lt.layout)
+    setLayouts(layoutData)
+    return newViews
+  })
+  }
 
   const [compositions, setCompositions] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -153,6 +161,7 @@ const App = () => {
         views={views}
         layouts={layouts}
         handleLayoutChange={handleLayoutChange}
+        handleRemoveLayout={removeLayout}
       />
     </div>
   );

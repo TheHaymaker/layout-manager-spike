@@ -57,12 +57,14 @@ interface LayoutManagerProps {
   layouts: LayoutDetails[],
   views: Layout[]
   handleLayoutChange?: any,
+  handleRemoveLayout?: any
 }
 
 export const LayoutManager: React.FC<LayoutManagerProps> = ({
   layouts = [],
   views = [],
-  handleLayoutChange = null
+  handleLayoutChange = null,
+  handleRemoveLayout = null
 }) => {
 
   
@@ -72,7 +74,7 @@ export const LayoutManager: React.FC<LayoutManagerProps> = ({
       return (
         <RiskViewCard key={lt.i}>
         <CardWrapper>
-          <CardHeader viewId={lt.i} title={views[index].name} />
+          <CardHeader handleRemoveLayout={handleRemoveLayout} viewId={lt.i} title={views[index].name} />
           <CardContentWrapperScrollbarOffset>
             <CardContentWrapper>
               <hr />
