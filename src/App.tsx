@@ -1,85 +1,152 @@
 import React, {useState, useEffect} from 'react';
-import ResponsiveGridLayout from 'react-grid-layout';
 import styled from 'styled-components'
+import { LayoutManager, AddRiskView } from './components';
 import { getData, postData } from './api';
 import './App.css';
-import '../node_modules/react-grid-layout/css/styles.css'
-import '../node_modules/react-resizable/css/styles.css'
 
-type Book = {
-  id: string | number,
-  name: string
-}
+import CreatableSelect from 'react-select/creatable';
+import { ActionMeta, OnChangeValue } from 'react-select';
 
-interface Column {
-  "isin": string
-}
-interface LayoutDetails {
-  "i": string,
-  "x": number,
-  "y": number,
-  "w": number,
-  "h": number,
-  "minW": number,
-  "maxW": number,
-  "minH": number,
-  "maxH": number,
-  "static": boolean,
-  "isDraggable"?: boolean,
-  "isResizable"?: boolean,
-  "resizeHandles?"?: Array<'s' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne'>,
-  "isBounded": boolean
-}
-type Layout = {
-  "id": number | string,
-  "archetype": number | string,
-  "name": string,
-  "bookAssociations": string[],
-  "viewSettings": {
-    "hypotheticalPosition": boolean
-  },
-  "columnData":Column[]
-  "layout": LayoutDetails
+
+
+interface SelectProps {
+  options: SelectOption[],
+  setOptions: any,
+  isLoading: boolean,
+  setIsLoading: any,
+  value: SelectOption | null,
+  setValue: any,
+  onCreateCallback?: any
 }
 
-const RiskViewCard = styled.div`
-background: lightblue;
-border-radius: 3px;
-border: 2px solid palevioletred;
-color: palevioletred;
-margin: 0 1em;
-padding: 0.25em 1em;
+const createOption = (label: string) => ({
+  label,
+  value: label.toLowerCase().replace(/\W/g, ''),
+});
+export const CreatableSingle:React.FC<SelectProps> = ({
+  options,
+  setOptions,
+  isLoading,
+  setIsLoading,
+  value,
+  setValue,
+  onCreateCallback = null
+
+}) => {
+  const handleChange = (
+    newValue: OnChangeValue<SelectOption, false>,
+    actionMeta: ActionMeta<SelectOption>
+  ) => {
+    console.group('Value Changed');
+    console.log(newValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
+    setValue(newValue)
+  };
+  const handleInputChange = (inputValue: any, actionMeta: any) => {
+    console.group('Input Changed');
+    console.log(inputValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
+  }
+
+  const handleCreate = (inputValue: string) => {
+    setIsLoading(true)
+    console.group('Option created');
+    console.log('Wait a moment...');
+    setTimeout(() => {
+      const newOption = createOption(inputValue);
+      console.log(newOption);
+      console.groupEnd();
+      setIsLoading(false)
+      setOptions([...options, newOption])
+      setValue(newOption)
+      if(onCreateCallback) {
+        onCreateCallback(newOption)
+      }
+    }, 1000);
+  };
+  
+    return (
+      <CreatableSelect
+        isClearable
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+        options={options}
+        isDisabled={isLoading}
+        isLoading={isLoading}
+        onCreateOption={handleCreate}
+        value={value}
+      />
+    );
+  
+}
+
+const CompositionContainer = styled.div`
+display: flex;
+margin: 4px;
+padding: 4px;
+border: 1px solid grey;
+justify-content: space-between;
 `
 
 const App = () => {
 
-  const [books, setBooks] = useState([])
+  const [archetypes, setArchetypes] = useState([])
   const [layouts, setLayouts] = useState<LayoutDetails[]>([])
+  const [views, setViews] = useState<Layout[]>([])
+  const handleSetViews = (newView: Layout) => {
+    setViews(prev => ([...prev, newView]))
+  }
   useEffect(() => {
     const getAllTheData = async () => {
-      const books = await getData('http://localhost:3004/archetypes')
-      const layouts = await getData('http://localhost:3004/layouts')
-      const layoutData = layouts.map((lt: Layout) => lt.layout)
-        setBooks(books)
+      const archetypes = await getData('http://localhost:3004/archetypes')
+      const views = await getData('http://localhost:3004/layouts')
+      const layoutData = views.map((lt: Layout) => lt.layout)
+        setArchetypes(archetypes)
+        setViews(views)
         setLayouts(layoutData)
     }
     getAllTheData()
   }, [])
 
+  useEffect(() => {
+    console.log(views)
+    const layoutData = views.map((lt: Layout) => lt.layout)
+    setLayouts(layoutData)
+
+  }, [views])
+
+  const [compositions, setCompositions] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [value, setValue] = useState(null)
+
   return (
     <div className="App">
+      <CompositionContainer>
+        <div>
+        <CreatableSingle 
+          options={compositions} 
+          setOptions={setCompositions} 
+          setValue={setValue} 
+          value={value} 
+          isLoading={isLoading} 
+          setIsLoading={setIsLoading}
+        />
+        </div>
+        <div>
+          <AddRiskView archetypes={archetypes} handleAddViewUpdate={handleSetViews} />
+        </div>
+      </CompositionContainer>
       <header className="App-header">
-       {books && books.map((book: Book) => (
-        <span key={book.id}>{book.name}</span>
+       {archetypes && archetypes.map((archetype: Archetype) => (
+        <span key={archetype.id}>{archetype.name}</span>
        ))}
       </header>
-      <ResponsiveGridLayout className="layout" layout={layouts} cols={12} rowHeight={30} width={1200}>
-        {layouts.map((lt: LayoutDetails) => {
-          console.log(lt)
-          return (
-          <RiskViewCard key={lt.i}>{lt.i}</RiskViewCard>
-        )})}
-      </ResponsiveGridLayout>
+      <LayoutManager
+        views={views}
+        layouts={layouts}
+      />
     </div>
   );
 }

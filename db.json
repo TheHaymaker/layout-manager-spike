@@ -31,6 +31,7 @@
       "id": "IGA2"
     }
   ],
+  "compositions": [],
   "layouts": [
     {
       "id": 1,
@@ -47,8 +48,8 @@
         "i": "lohgyuy-8-iu",
         "x": 0,
         "y": 0,
-        "w": 1,
-        "h": 2,
+        "w": 12,
+        "h": 8,
         "minW": 0,
         "maxW": 999999,
         "minH": 0,
