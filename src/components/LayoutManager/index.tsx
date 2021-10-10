@@ -4,8 +4,8 @@ import RGL, { WidthProvider } from "react-grid-layout";
 import styled from 'styled-components'
 import { CardHeader } from '../../components';
 
-import '../../../node_modules/react-grid-layout/css/styles.css'
-import '../../../node_modules/react-resizable/css/styles.css'
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 
 const ReactGridLayout = WidthProvider(RGL);
 const RiskViewCard = styled.div`

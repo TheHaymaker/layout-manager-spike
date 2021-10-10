@@ -1,0 +1,28 @@
+.rct-node-icon {
+  color: #747474 !important
+}
+
+.rct-node-expanded span.rct-collapse,
+.rct-node-expanded ol {
+  position: relative;
+}
+
+.rct-node-expanded span.rct-collapse::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background-color: #d7d7d7;
+  top: 0;
+  left: 50%;
+}
+
+.rct-node-expanded ol::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background-color: #d7d7d7;
+  top: 0;
+  left: 12px;
+}
