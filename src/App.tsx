@@ -148,11 +148,7 @@ const App = () => {
           <AddRiskView archetypes={archetypes} handleAddViewUpdate={handleSetViews} />
         </div>
       </CompositionContainer>
-      <header className="App-header">
-       {archetypes && archetypes.map((archetype: Archetype) => (
-        <span key={archetype.id}>{archetype.name}</span>
-       ))}
-      </header>
+      <hr />
       <LayoutManager
         views={views}
         layouts={layouts}
