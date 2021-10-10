@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
-import { LayoutManager, AddRiskView, BookMapper } from './components';
+import { LayoutManager, AddRiskView, TreeViewer, BookMapper } from './components';
 import { getData, postData } from './api';
 import './App.css';
 
@@ -142,7 +142,9 @@ const App = () => {
   return (
     <div className="App">
       <CompositionContainer>
-          <BookMapper />
+          <TreeViewer>
+            <BookMapper />
+          </TreeViewer>
         <div>
         <CreatableSingle 
           options={compositions} 
