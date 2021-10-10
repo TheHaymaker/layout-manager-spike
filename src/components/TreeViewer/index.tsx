@@ -7,8 +7,6 @@ export const TreeViewer: React.FC = (props) => {
   const [open, setOpen] = useState(false)
 
   const handleDismiss = () => setOpen(false)
-
-  const minHeight = '500'
   return (
     <>
       <button onClick={() => setOpen(true)}>Select Books</button>

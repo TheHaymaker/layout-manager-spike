@@ -32,6 +32,14 @@ type TreeProps = {
   onExpandedCallback?: any;
 }
 
+/**
+ * ---
+ * ## TODO:
+ * - takes `checked` & `expanded` as props.
+ * - state defaults to props if they are passed in
+ * 
+ * ---
+ */
 export const BookMapper: React.FC<TreeProps> = ({
   nodes = sampleNodes,
   onCheckedCallback = null,
