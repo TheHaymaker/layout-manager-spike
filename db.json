@@ -5,16 +5,16 @@
       "name": "Risk"
     },
     {
-      "id": 2, 
+      "id": 2,
       "name": "Position Pivot"
     },
     {
-      "id": 3, 
-      "name":"Hypothetical Overlay"
+      "id": 3,
+      "name": "Hypothetical Overlay"
     },
     {
       "id": 4,
-       "name":"Trader Summary"
+      "name": "Trader Summary"
     }
   ],
   "books": [
@@ -31,36 +31,105 @@
       "id": "IGA2"
     }
   ],
-  "compositions": [],
-  "layouts": [
+  "compositions": [
     {
-      "id": "lohgyuy-8-iu",
-      "archetype": 1,
-      "name": "Risk Table #1",
-      "bookAssociations": ["IGT8"],
-      "viewSettings": {
-        "hypotheticalPosition": true
-      },
-      "columnData":[
-        {"isin": "3985029CN8"}
-      ],
-      "layout": {
-        "i": "lohgyuy-8-iu",
-        "x": 0,
-        "y": 0,
-        "w": 12,
-        "h": 8,
-        "minW": 0,
-        "maxW": 999999,
-        "minH": 0,
-        "maxH": 999999,
-        "static": false,
-        "isDraggable": true,
-        "isResizable": true,
-        "resizeHandles?": ["se"],
-        "isBounded": false
-      }
+      "name": "Default",
+      "id": 1634001787980,
+      "layoutData": [
+        {
+          "id": "lohgyuy-8-iu",
+          "archetype": 1,
+          "name": "Risk Table #1",
+          "bookAssociations": [
+            "IGT8"
+          ],
+          "viewSettings": {
+            "hypotheticalPosition": true
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 9,
+            "h": 8,
+            "x": 0,
+            "y": 0,
+            "i": "lohgyuy-8-iu",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        },
+        {
+          "id": "6c38ac5a-63ee-470f-baf2-5106976c7780",
+          "archetype": 2,
+          "name": "Position Pivot",
+          "bookAssociations": [],
+          "viewSettings": {
+            "hypotheticalPosition": false
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 12,
+            "h": 4,
+            "x": 12,
+            "y": 4,
+            "i": "6c38ac5a-63ee-470f-baf2-5106976c7780",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        },
+        {
+          "id": "e203ed32-e831-4950-908b-cf254d36a3cc",
+          "archetype": 3,
+          "name": "Hypothetical Overlay",
+          "bookAssociations": [],
+          "viewSettings": {
+            "hypotheticalPosition": false
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 9,
+            "h": 4,
+            "x": 9,
+            "y": 0,
+            "i": "e203ed32-e831-4950-908b-cf254d36a3cc",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        }
+      ]
     }
-  ]
-
+  ],
+  "layouts": []
 }

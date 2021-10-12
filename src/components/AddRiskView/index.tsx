@@ -13,6 +13,7 @@ interface AddRiskViewProps {
 
 const ButtonContainer = styled.div`
 position: relative;
+display: flex;
 `
 
 const ViewSelectionContainer = styled.div`

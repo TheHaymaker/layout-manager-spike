@@ -28,40 +28,36 @@ const sampleNodes = [{
 
 type TreeProps = {
   nodes?: TreeNode[],
-  onCheckedCallback?: any,
-  onExpandedCallback?: any;
+  checked?: any[],
+  expanded?: any[],
+  onChecked?: any,
+  onExpanded?: any;
 }
 
-/**
- * ---
- * ## TODO:
- * - takes `checked` & `expanded` as props.
- * - state defaults to props if they are passed in
- * 
- * ---
- */
 export const BookMapper: React.FC<TreeProps> = ({
   nodes = sampleNodes,
-  onCheckedCallback = null,
-  onExpandedCallback = null
+  checked = [],
+  expanded = [],
+  onChecked = null,
+  onExpanded = null
 }) => {
-  const [checked, setChecked] = useState<string[]>([])
-  const [expanded, setExpanded] = useState<string[]>([])
+  const [checkedLocal, setCheckedLocal] = useState<string[]>(checked)
+  const [expandedLocal, setExpandedLocal] = useState<string[]>(expanded)
   return (
     <CheckboxTree
       nodes={nodes}
       checked={checked}
       expanded={expanded}
       onCheck={checkedOpts => {
-        setChecked(checkedOpts)
-        if(onCheckedCallback) {
-          onCheckedCallback(checkedOpts)
+        setCheckedLocal(checkedOpts)
+        if(onChecked) {
+          onChecked(checkedOpts)
         }
       }}
       onExpand={expandedOpts => {
-        setExpanded(expandedOpts)
-        if(onExpandedCallback) {
-          onExpandedCallback(expandedOpts)
+        setExpandedLocal(expandedOpts)
+        if(onExpanded) {
+          onExpanded(expandedOpts)
         }
       }}
       icons={{
