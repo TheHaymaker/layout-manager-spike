@@ -135,6 +135,72 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
                 <input name="hypothetical" type="checkbox" />
                 </div>
               </li>
+              {isVisible && <li className="listItem" style={{
+                paddingBottom: "5px",
+                borderBottom: "1px solid black"
+              }}>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                <p style={{
+                  fontSize: "10px",
+                  margin: "0px"
+                }} id="group_label_1">View Book Selection Action:</p>
+                <div id={`rg1-${viewId}`}
+                  role="radiogroup"
+                  aria-labelledby="group_label_1"
+                  tabIndex={0}
+                >
+                  <div 
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <input 
+                      type="radio"
+                      aria-checked="false"
+                      tabIndex={0}
+                      value="Augment"
+                      id={`Augment-${viewId}`}
+                      name={`contentMenuView-${viewId}`}
+                    />
+                    <label 
+                      style={{
+                        fontSize: "10px",
+                      }} 
+                      htmlFor={`Augment-${viewId}`}
+                    >
+                      Augment
+                    </label>
+                  </div>
+                  <div 
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <input 
+                      type="radio"
+                      aria-checked="false"
+                      tabIndex={-1}
+                      value="Replace"
+                      id={`Replace-${viewId}`}
+                      name={`contentMenuView-${viewId}`}
+                    />
+                    <label 
+                      style={{
+                        fontSize: "10px",
+                      }} 
+                      htmlFor={`Replace-${viewId}`}
+                    >
+                      Replace
+                    </label>
+                  </div>
+                </div>
+                </div>
+              </li>}
               <li className="listItem">
                 <div style={{
                   display: "block",
