@@ -129,6 +129,134 @@
           }
         }
       ]
+    },
+    {
+      "name": "Compound",
+      "id": 1634003144464,
+      "layoutData": [
+        {
+          "id": "lohgyuy-8-iu",
+          "archetype": 1,
+          "name": "Risk Table #1",
+          "bookAssociations": [
+            "IGT8"
+          ],
+          "viewSettings": {
+            "hypotheticalPosition": true
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 7,
+            "h": 17,
+            "x": 0,
+            "y": 0,
+            "i": "lohgyuy-8-iu",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        },
+        {
+          "id": "6c38ac5a-63ee-470f-baf2-5106976c7780",
+          "archetype": 2,
+          "name": "Position Pivot",
+          "bookAssociations": [],
+          "viewSettings": {
+            "hypotheticalPosition": false
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 9,
+            "h": 8,
+            "x": 7,
+            "y": 9,
+            "i": "6c38ac5a-63ee-470f-baf2-5106976c7780",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        },
+        {
+          "id": "e203ed32-e831-4950-908b-cf254d36a3cc",
+          "archetype": 3,
+          "name": "Hypothetical Overlay",
+          "bookAssociations": [],
+          "viewSettings": {
+            "hypotheticalPosition": false
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 17,
+            "h": 9,
+            "x": 7,
+            "y": 0,
+            "i": "e203ed32-e831-4950-908b-cf254d36a3cc",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        },
+        {
+          "id": "ef2c988b-4d57-431e-b751-9d2e2eae5adb",
+          "archetype": 4,
+          "name": "Trader Summary",
+          "bookAssociations": [],
+          "viewSettings": {
+            "hypotheticalPosition": false
+          },
+          "columnData": [
+            {
+              "isin": "3985029CN8"
+            }
+          ],
+          "layout": {
+            "w": 8,
+            "h": 8,
+            "x": 16,
+            "y": 9,
+            "i": "ef2c988b-4d57-431e-b751-9d2e2eae5adb",
+            "minW": 0,
+            "maxW": 999999,
+            "minH": 0,
+            "maxH": 999999,
+            "moved": false,
+            "static": false,
+            "isDraggable": true,
+            "isResizable": true,
+            "isBounded": false
+          }
+        }
+      ]
     }
   ],
   "layouts": []

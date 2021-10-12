@@ -168,7 +168,7 @@ const App = () => {
   })
   }
 
-  const [allCompositions, setAllCompositions] = useState([])
+  const [allCompositions, setAllCompositions] = useState<any[]>([])
   const [compositions, setCompositions] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [value, setValue] = useState(null)
@@ -188,7 +188,23 @@ const App = () => {
    * ---
    */
      const [currentCompositionName, setCurrentCompositionName] = useState()
-     const setCompositionName = (val: any) => setCurrentCompositionName(val.label)
+     const setCompositionName = (val: any) => {
+      setCurrentCompositionName(val.label)
+
+      // check if name is in allCompositions
+      const compo = allCompositions.find(node => node.name === val.label)
+
+      if(compo) {
+
+        // set all the things
+        const views = compo.layoutData
+        const layoutData = compo.layoutData.map((lt: Layout) => lt.layout)
+        setViews(views)
+        setLayouts(layoutData)
+      }
+    }
+
+     
 
   return (
     <div className="App">
