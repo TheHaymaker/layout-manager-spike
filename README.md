@@ -1,5 +1,7 @@
 # Layout Manager Sample App
 
+![layout-manager](https://github.com/TheHaymaker/layout-manager-spike/blob/main/layout-manager.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
